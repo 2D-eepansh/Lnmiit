@@ -250,34 +250,62 @@ export function detectAnomalies(blocks: NormalizedBlock[]): {
     type: 'slow_block' | 'fast_block' | 'empty_block';
     height: number;
     description: string;
+    blockTimeSec?: number;
+    severity: 'low' | 'moderate' | 'elevated';
+    expectedBaselineSec: number;
+    varianceFactor?: number;
   }>;
 } {
   const anomalies: Array<{
     type: 'slow_block' | 'fast_block' | 'empty_block';
     height: number;
     description: string;
+    blockTimeSec?: number;
+    severity: 'low' | 'moderate' | 'elevated';
+    expectedBaselineSec: number;
+    varianceFactor?: number;
   }> = [];
 
   const avgBlockTime = blocks
     .filter(b => b.blockTime && b.blockTime > 0)
     .reduce((sum, b, _, arr) => sum + b.blockTime! / arr.length, 0);
 
+  const expectedBaselineSec = 120; // Ergo target ~2 minutes
+
+  const classifySeverity = (factor: number): 'low' | 'moderate' | 'elevated' => {
+    if (factor >= 3) return 'elevated';
+    if (factor >= 1.5) return 'moderate';
+    return 'low';
+  };
+
   blocks.forEach(block => {
     // Detect slow blocks (> 3x average)
     if (block.blockTime && block.blockTime > avgBlockTime * 3) {
+      const blockTimeSec = block.blockTime / 1000;
+      const factor = avgBlockTime > 0 ? block.blockTime / avgBlockTime : 0;
       anomalies.push({
         type: 'slow_block',
         height: block.height,
-        description: `Block took ${Math.round(block.blockTime / 1000)}s (${Math.round(block.blockTime / avgBlockTime)}x normal)`,
+        description: `Block took ${Math.round(blockTimeSec)}s (~${Math.round(factor)}x recent median)`,
+        blockTimeSec,
+        varianceFactor: factor,
+        severity: classifySeverity(factor),
+        expectedBaselineSec,
       });
     }
 
     // Detect very fast blocks (< 0.3x average)
     if (block.blockTime && block.blockTime < avgBlockTime * 0.3) {
+      const blockTimeSec = block.blockTime / 1000;
+      const factor = avgBlockTime > 0 ? block.blockTime / avgBlockTime : 0;
       anomalies.push({
         type: 'fast_block',
         height: block.height,
-        description: `Block mined unusually fast (${Math.round(block.blockTime / 1000)}s)`,
+        description: `Block mined unusually fast (${Math.round(blockTimeSec)}s)`,
+        blockTimeSec,
+        varianceFactor: factor,
+        severity: classifySeverity(1 / Math.max(factor, 0.01)),
+        expectedBaselineSec,
       });
     }
 
@@ -287,6 +315,8 @@ export function detectAnomalies(blocks: NormalizedBlock[]): {
         type: 'empty_block',
         height: block.height,
         description: 'Block contains no transactions',
+        severity: 'low',
+        expectedBaselineSec,
       });
     }
   });
@@ -294,5 +324,61 @@ export function detectAnomalies(blocks: NormalizedBlock[]): {
   return {
     hasAnomalies: anomalies.length > 0,
     anomalies,
+  };
+}
+
+/**
+ * Summarize anomalies for UI widgets
+ * Provides lightweight derived metrics for Phase 2 visualizations
+ */
+export function summarizeAnomalies(
+  blocks: NormalizedBlock[],
+  metrics: BlockMetrics | null
+): {
+  total: number;
+  counts: { slow: number; fast: number; empty: number };
+  blockTimeCv: number;
+  difficultyChange: number;
+  activityScore: number;
+} {
+  const { anomalies } = detectAnomalies(blocks);
+  const counts = anomalies.reduce(
+    (acc, a) => {
+      if (a.type === 'slow_block') acc.slow += 1;
+      if (a.type === 'fast_block') acc.fast += 1;
+      if (a.type === 'empty_block') acc.empty += 1;
+      return acc;
+    },
+    { slow: 0, fast: 0, empty: 0 }
+  );
+
+  const blockTimes = blocks
+    .filter(b => b.blockTime && b.blockTime > 0 && b.blockTime < 600000)
+    .map(b => b.blockTime!);
+
+  const avgBlockTime = blockTimes.length
+    ? blockTimes.reduce((sum, t) => sum + t, 0) / blockTimes.length
+    : 120000;
+
+  const variance = blockTimes.length
+    ? blockTimes.reduce((sum, t) => sum + Math.pow(t - avgBlockTime, 2), 0) / blockTimes.length
+    : 0;
+
+  const blockTimeCv = avgBlockTime > 0 ? Math.sqrt(variance) / avgBlockTime : 0;
+
+  // Difficulty change from calculateDifficultyStability for UI friendliness
+  const { changePercent } = calculateDifficultyStability(blocks);
+
+  // Activity score derived from metrics (0-100 similar to calculateNetworkActivityScore)
+  const activityScore = metrics
+    ? Math.min(100, ((metrics.totalTxCount / Math.max(metrics.timeRange / 60000, 1)) / 10) * 100)
+    : 0;
+
+  return {
+    total: anomalies.length,
+    counts,
+    blockTimeCv,
+    difficultyChange: changePercent,
+    activityScore,
   };
 }

@@ -1,0 +1,167 @@
+.assumptions-page {
+  padding: 2.5rem 2.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.assumptions-page .page-content {
+  background: var(--color-bg-panel);
+  border: 1px solid var(--color-border-light);
+  border-radius: 4px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.assumptions-page .page-content h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.assumptions-page .intro-text {
+  margin: 0 0 1rem;
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+.assumptions-section {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.assumptions-section:last-child {
+  border-bottom: none;
+}
+
+.assumptions-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+}
+
+.assumptions-section h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.assumptions-section p {
+  margin: 0 0 0.75rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.assumptions-section p:last-child {
+  margin-bottom: 0;
+}
+
+.assumptions-section ul {
+  margin: 0.75rem 0;
+  padding-left: 2rem;
+  color: var(--color-text-secondary);
+}
+
+.assumptions-section li {
+  margin: 0.4rem 0;
+  line-height: 1.6;
+}
+
+.note {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-left: 3px solid var(--color-primary);
+  background: #f0f5f1;
+  border-radius: 4px;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.limitations-table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.limitations-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.limitations-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.limitations-table td {
+  padding: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.limitations-table td:first-child {
+  font-weight: 600;
+  color: var(--color-text);
+  width: 20%;
+  vertical-align: top;
+}
+
+.info-box {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(60, 242, 255, 0.08));
+  border-left: 4px solid var(--color-primary);
+  border-bottom: none;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.info-box h3 {
+  margin-top: 0;
+  color: var(--color-primary-light);
+}
+
+.info-box p,
+.info-box ul {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .assumptions-page {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .assumptions-page .page-content {
+    padding: 1.5rem;
+  }
+
+  .assumptions-page .page-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .assumptions-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .note {
+    margin: 0.75rem 0;
+    padding: 0.75rem;
+  }
+
+  .limitations-table {
+    font-size: 0.9rem;
+  }
+
+  .limitations-table td {
+    padding: 0.75rem;
+  }
+
+  .limitations-table td:first-child {
+    width: 25%;
+  }
+}

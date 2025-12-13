@@ -1,0 +1,250 @@
+.top-nav {
+  background: var(--color-bg-panel);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.nav-branding {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.nav-branding h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.nav-subtitle {
+  display: none;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+  border-radius: 0;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+  background: var(--color-bg-secondary);
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid var(--color-primary);
+  font-weight: 500;
+}
+
+.nav-kya-btn {
+  background: var(--color-primary);
+  color: #ffffff;
+  border: 1px solid var(--color-primary-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-size: 0.875rem;
+  margin-left: 1rem;
+}
+
+.nav-kya-btn:hover {
+  background: var(--color-primary-dark);
+}
+
+.nav-icon-btn {
+  background: var(--color-bg-panel);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+}
+
+.nav-icon-btn:hover:not(:disabled) {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.nav-icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-icon-btn svg.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: var(--color-bg-panel);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.mobile-menu-toggle:hover {
+  background: var(--color-bg-secondary);
+}
+
+.nav-status-bar {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border-light);
+  padding: 0.5rem 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.status-items {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+}
+
+.status-icon {
+  flex-shrink: 0;
+}
+
+.status-icon.online {
+  color: var(--color-success);
+}
+
+.status-icon.offline {
+  color: var(--color-danger);
+}
+
+.status-item.warning {
+  color: var(--color-warning);
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-branding h1 {
+    font-size: 1.125rem;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-branding h1 {
+    font-size: 1rem;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-menu.open {
+    max-height: 300px;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+    border-bottom: none;
+  }
+  
+  .nav-link.active {
+    background: var(--color-bg-secondary);
+    border-bottom: none;
+  }
+
+  .nav-kya-btn {
+    width: calc(100% - 2rem);
+    margin: 0.75rem 1rem;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-status-bar {
+    padding: 0.5rem 1rem;
+  }
+
+  .status-items {
+    gap: 1rem;
+    font-size: 0.6875rem;
+  }
+}
