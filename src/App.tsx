@@ -2,6 +2,7 @@ import { useEffect, useState, lazy, Suspense } from 'react';
 import { AppProvider } from './context/AppContext';
 import { useApp } from './context/useApp';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { AnimatedCryptoBackground } from './components/AnimatedCryptoBackground';
 import { NetworkHealth } from './components/NetworkHealth';
 import { PriceStability } from './components/PriceStability';
 import { RiskSummary } from './components/RiskSummary';
@@ -64,6 +65,7 @@ function AppContent() {
 
   return (
     <div className="app">
+      <AnimatedCryptoBackground />
       {/* Header */}
       <header className="app-header">
         <div className="header-content">
