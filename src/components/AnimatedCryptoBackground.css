@@ -60,24 +60,24 @@
   filter: drop-shadow(0 0 8px #00ff88);
 }
 
-/* Coin 1 - Top Left Empty Space */
+/* Coin 1 - Top Right Far Edge (completely empty) */
 .coin-1 {
-  top: 8%;
-  left: 3%;
+  top: 5%;
+  right: 1%;
   animation: revolveFloat 20s ease-in-out infinite, rotateX 3s linear infinite;
 }
 
-/* Coin 2 - Top Right Empty Space */
+/* Coin 2 - Top Far Right Corner */
 .coin-2 {
-  top: 12%;
-  right: 4%;
+  top: 15%;
+  right: 0.5%;
   animation: revolveFloat 18s ease-in-out infinite 1s, rotateX 3.5s linear infinite;
 }
 
-/* Coin 3 - Bottom Left Footer Area */
+/* Coin 3 - Bottom Far Right Edge */
 .coin-3 {
-  bottom: 8%;
-  left: 2%;
+  bottom: 5%;
+  right: 1%;
   animation: revolveFloat 22s ease-in-out infinite 0.5s, rotateX 3.2s linear infinite;
 }
 
@@ -92,25 +92,25 @@
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 16px rgba(0, 255, 136, 0.3));
 }
 
-/* Coin 4 - Top Right Area (Above Charts) */
+/* Coin 4 - Far Right Middle Top */
 .coin-4 {
-  top: 6%;
-  right: 2%;
+  top: 25%;
+  right: 0.5%;
   animation: revolveFloat 19s ease-in-out infinite 1.5s, rotateX 3.3s linear infinite reverse;
 }
 
-/* Coin 5 - Middle Right (Away from Sliders) */
+/* Coin 5 - Far Right Middle (center-right edge) */
 .coin-5 {
   top: 50%;
-  right: 2%;
+  right: 0.5%;
   transform: translateY(-50%);
   animation: revolveFloat 17s ease-in-out infinite 0.8s, rotateX 3s linear infinite;
 }
 
-/* Coin 6 - Bottom Right Corner */
+/* Coin 6 - Far Right Bottom Area */
 .coin-6 {
-  bottom: 15%;
-  right: 3%;
+  bottom: 25%;
+  right: 0.5%;
   animation: revolveFloat 21s ease-in-out infinite 1.2s, rotateX 3.4s linear infinite reverse;
 }
 
@@ -125,18 +125,17 @@
   filter: drop-shadow(0 0 8px #00ff88) drop-shadow(0 0 16px rgba(0, 255, 136, 0.2));
 }
 
-/* Coin 7 - Left Middle Empty Space */
+/* Coin 7 - Bottom Far Left Edge */
 .coin-7 {
-  top: 45%;
-  left: 2%;
-  transform: translateY(-50%);
+  bottom: 12%;
+  left: 0.5%;
   animation: revolveFloat 20s ease-in-out infinite 0.7s, rotateX 3.1s linear infinite reverse;
 }
 
-/* Coin 8 - Right Middle Empty Space */
+/* Coin 8 - Bottom Center-Right Empty Area */
 .coin-8 {
-  bottom: 35%;
-  right: 8%;
+  bottom: 3%;
+  right: 15%;
   animation: revolveFloat 19s ease-in-out infinite 1.3s, rotateX 3.6s linear infinite;
 }
 
