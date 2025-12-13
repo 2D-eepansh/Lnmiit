@@ -1,0 +1,168 @@
+.price-stability {
+  background: linear-gradient(135deg, rgba(17, 17, 20, 0.9), rgba(23, 23, 27, 0.85));
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: var(--glow-strong), 0 18px 40px rgba(0, 0, 0, 0.4);
+  border: var(--glass-border);
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.price-stability:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-strong), 0 22px 46px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.price-stability::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 16px;
+  background: radial-gradient(circle at 12% 18%, rgba(60, 242, 255, 0.08), transparent 30%),
+              radial-gradient(circle at 82% -10%, rgba(255, 106, 47, 0.1), transparent 32%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.price-main {
+  margin: 1.5rem 0;
+}
+
+.price-current {
+  background: var(--glass);
+  padding: 1.5rem;
+  border-radius: 14px;
+  border: var(--glass-border);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.price-current::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(60, 242, 255, 0.08), rgba(255, 106, 47, 0.08));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.price-current:hover::after {
+  opacity: 1;
+}
+
+.price-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.price-value-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.price-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.price-change {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.05);
+}
+
+.price-change.positive {
+  background: linear-gradient(135deg, rgba(73, 242, 143, 0.15), rgba(73, 242, 143, 0.05));
+  color: var(--color-success);
+}
+
+.price-change.negative {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.18), rgba(255, 107, 107, 0.06));
+  color: var(--color-danger);
+}
+
+.price-timeframe {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  margin-top: 0.5rem;
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.metric-compact {
+  background: var(--glass);
+  padding: 1rem;
+  border-radius: 12px;
+  border: var(--glass-border);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.metric-value-small {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 0.25rem;
+}
+
+.volatility-explanation {
+  background: linear-gradient(135deg, rgba(255, 106, 47, 0.1), rgba(60, 242, 255, 0.06));
+  border-left: 3px solid var(--color-primary);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.volatility-explanation h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.875rem;
+  color: var(--color-primary-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.volatility-explanation p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .price-value {
+    font-size: 2rem;
+  }
+  
+  .price-change {
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .metrics-row {
+    grid-template-columns: 1fr;
+  }
+}

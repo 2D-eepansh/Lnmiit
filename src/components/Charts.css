@@ -1,0 +1,113 @@
+.chart-container {
+  background: linear-gradient(135deg, rgba(17, 17, 20, 0.9), rgba(23, 23, 27, 0.85));
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: var(--glow-strong), 0 18px 40px rgba(0, 0, 0, 0.4);
+  border: var(--glass-border);
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-container:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-strong), 0 22px 46px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.chart-container::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 16px;
+  background: radial-gradient(circle at 18% 18%, rgba(60, 242, 255, 0.08), transparent 32%),
+              radial-gradient(circle at 88% 5%, rgba(255, 106, 47, 0.08), transparent 30%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.chart-container.loading {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skeleton-chart {
+  flex: 1;
+  background: linear-gradient(90deg, rgba(60, 242, 255, 0.08) 25%, rgba(255, 106, 47, 0.1) 50%, rgba(60, 242, 255, 0.08) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.chart-icon {
+  color: var(--color-primary-light);
+  filter: drop-shadow(0 0 6px rgba(255, 106, 47, 0.4));
+  flex-shrink: 0;
+}
+
+.chart-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.chart-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
+}
+
+.legend-line {
+  width: 24px;
+  height: 0;
+  border-top: 2px dashed;
+}
+
+.legend-stat {
+  font-weight: 600;
+  color: var(--color-primary-light);
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 1rem;
+  }
+  
+  .chart-header h3 {
+    font-size: 1.1rem;
+  }
+}
