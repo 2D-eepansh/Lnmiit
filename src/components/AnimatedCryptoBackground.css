@@ -1,4 +1,4 @@
-/* Animated Crypto Background - Phase 1 V2.0 Enhancement */
+/* Animated Crypto Background - Futuristic Black + Neon Theme */
 
 .animated-crypto-bg {
   position: fixed;
@@ -6,221 +6,253 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1515 50%, #0f0f0f 100%);
+  background: #0a0a0a;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
 }
 
-/* Rustic texture overlay */
-.rustic-texture-overlay {
+/* Futuristic grid pattern overlay - subtle */
+.futuristic-grid {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: 
-    repeating-linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0) 0px,
-      rgba(0, 0, 0, 0.02) 1px,
-      rgba(0, 0, 0, 0) 2px,
-      rgba(0, 0, 0, 0) 3px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0) 0px,
-      rgba(0, 0, 0, 0.02) 1px,
-      rgba(0, 0, 0, 0) 2px,
-      rgba(0, 0, 0, 0) 3px
-    ),
-    radial-gradient(
-      ellipse at 20% 50%,
-      rgba(139, 69, 19, 0.03) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 80% 80%,
-      rgba(101, 67, 33, 0.03) 0%,
-      transparent 50%
-    );
+    linear-gradient(0deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.4;
   pointer-events: none;
-  animation: rustleTexture 20s ease-in-out infinite;
+  animation: gridPulse 8s ease-in-out infinite;
 }
 
-/* Base crypto coin styles */
+/* Neon glow ambient light layer */
+.neon-glow-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+/* Base crypto coin container */
 .crypto-coin {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #00ff88;
-  text-shadow: 0 0 20px #00ff88, 0 0 40px #00ff4400;
-  filter: drop-shadow(0 0 15px #00ff8880) drop-shadow(0 0 30px #00ff2200);
-  animation: floatDrift 15s ease-in-out infinite;
+  will-change: transform;
 }
 
-.crypto-coin svg {
-  filter: drop-shadow(0 0 10px #00ff88) drop-shadow(0 0 20px #ffffff66);
-}
-
-/* Bitcoin - Top left, green neon */
+/* Bitcoin coins - Green neon (#00ff88) */
 .btc-coin {
-  top: 10%;
-  left: 5%;
-  animation: floatDrift 18s ease-in-out infinite, rotateCoin 25s linear infinite;
-  --neon-color: #00ff88;
+  color: #00ff88;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.6)) drop-shadow(0 0 16px rgba(0, 255, 136, 0.3));
+  animation: revolveFloat 20s ease-in-out infinite;
 }
 
 .btc-coin svg {
   stroke: #00ff88;
+  filter: drop-shadow(0 0 6px #00ff88);
 }
 
-.btc-coin svg circle {
-  filter: drop-shadow(0 0 12px #00ff88) drop-shadow(0 0 25px #00ff4400);
+.coin-1 {
+  top: 8%;
+  left: 10%;
+  animation: revolveFloat 20s ease-in-out infinite, rotateX 3s linear infinite;
 }
 
-/* Ethereum - Center right, white + green glow */
+.coin-2 {
+  top: 25%;
+  right: 15%;
+  animation: revolveFloat 18s ease-in-out infinite 1s, rotateX 3.5s linear infinite;
+}
+
+.coin-3 {
+  bottom: 20%;
+  left: 8%;
+  animation: revolveFloat 22s ease-in-out infinite 0.5s, rotateX 3.2s linear infinite;
+}
+
+/* Ethereum coins - White/Cyan neon */
 .eth-coin {
-  top: 35%;
-  right: 8%;
-  animation: floatDrift 16s ease-in-out infinite 1s, rotateCoin 30s linear infinite;
-  --neon-color: #ffffff;
+  color: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 16px rgba(0, 255, 255, 0.3));
+  animation: revolveFloat 19s ease-in-out infinite;
 }
 
 .eth-coin svg {
   stroke: #ffffff;
-  filter: drop-shadow(0 0 10px #ffffff99) drop-shadow(0 0 20px #00ff8844);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 10px rgba(0, 255, 255, 0.4));
 }
 
-/* ERG - Bottom center-left, cyan + green neon */
+.coin-4 {
+  top: 40%;
+  right: 12%;
+  animation: revolveFloat 19s ease-in-out infinite 1.5s, rotateX 3.3s linear infinite reverse;
+}
+
+.coin-5 {
+  top: 60%;
+  left: 18%;
+  animation: revolveFloat 17s ease-in-out infinite 0.8s, rotateX 3s linear infinite;
+}
+
+.coin-6 {
+  bottom: 30%;
+  right: 20%;
+  animation: revolveFloat 21s ease-in-out infinite 1.2s, rotateX 3.4s linear infinite reverse;
+}
+
+/* ERG coins - Cyan neon (#00ffff) */
 .erg-coin {
-  bottom: 15%;
-  left: 12%;
-  animation: floatDrift 17s ease-in-out infinite 0.5s, rotateCoin 28s linear infinite reverse;
-  --neon-color: #00ffff;
+  color: #00ffff;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 16px rgba(0, 255, 136, 0.2));
+  animation: revolveFloat 18s ease-in-out infinite;
 }
 
 .erg-coin svg {
   stroke: #00ffff;
-  filter: drop-shadow(0 0 12px #00ffff88) drop-shadow(0 0 25px #00ff8855);
+  filter: drop-shadow(0 0 6px #00ffff) drop-shadow(0 0 12px rgba(0, 255, 136, 0.3));
 }
 
-/* Floating drift animation - smooth up/down movement */
-@keyframes floatDrift {
+.coin-7 {
+  top: 15%;
+  right: 25%;
+  animation: revolveFloat 20s ease-in-out infinite 0.7s, rotateX 3.1s linear infinite reverse;
+}
+
+.coin-8 {
+  bottom: 12%;
+  right: 10%;
+  animation: revolveFloat 19s ease-in-out infinite 1.3s, rotateX 3.6s linear infinite;
+}
+
+/* Smooth vertical floating + slight drift animation */
+@keyframes revolveFloat {
   0%, 100% {
     transform: translateY(0px) translateX(0px);
-    filter: drop-shadow(0 0 15px var(--neon-color, #00ff88)) drop-shadow(0 0 30px rgba(0, 255, 136, 0.2));
     opacity: 0.7;
   }
   25% {
-    transform: translateY(-30px) translateX(20px);
-    filter: drop-shadow(0 0 20px var(--neon-color, #00ff88)) drop-shadow(0 0 35px rgba(0, 255, 136, 0.3));
-    opacity: 0.8;
+    transform: translateY(-25px) translateX(15px);
+    opacity: 0.85;
   }
   50% {
-    transform: translateY(0px) translateX(-10px);
-    filter: drop-shadow(0 0 15px var(--neon-color, #00ff88)) drop-shadow(0 0 30px rgba(0, 255, 136, 0.2));
-    opacity: 0.7;
-  }
-  75% {
-    transform: translateY(20px) translateX(15px);
-    filter: drop-shadow(0 0 18px var(--neon-color, #00ff88)) drop-shadow(0 0 32px rgba(0, 255, 136, 0.25));
+    transform: translateY(0px) translateX(-8px);
     opacity: 0.75;
   }
+  75% {
+    transform: translateY(15px) translateX(12px);
+    opacity: 0.8;
+  }
 }
 
-/* Rotation animation - subtle coin spin */
-@keyframes rotateCoin {
+/* Realistic 3D rotation on X axis */
+@keyframes rotateX {
   0% {
-    transform: rotateY(0deg) rotateX(0deg);
+    transform: perspective(600px) rotateX(0deg);
   }
   50% {
-    transform: rotateY(180deg) rotateX(5deg);
+    transform: perspective(600px) rotateX(180deg);
   }
   100% {
-    transform: rotateY(360deg) rotateX(0deg);
+    transform: perspective(600px) rotateX(360deg);
   }
 }
 
-/* Rustle texture animation - subtle shift effect */
-@keyframes rustleTexture {
+/* Grid pulse animation */
+@keyframes gridPulse {
   0%, 100% {
     opacity: 0.3;
   }
   50% {
-    opacity: 0.35;
-  }
-}
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .crypto-coin {
-    filter: drop-shadow(0 0 10px var(--neon-color, #00ff88)) drop-shadow(0 0 20px rgba(0, 255, 136, 0.1));
-  }
-
-  .btc-coin {
-    width: 60px;
-    height: 60px;
-    top: 8%;
-    left: 8%;
-  }
-
-  .eth-coin {
-    width: 50px;
-    height: 50px;
-    right: 10%;
-    top: 45%;
-  }
-
-  .erg-coin {
-    width: 55px;
-    height: 55px;
-    bottom: 20%;
-    left: 15%;
-  }
-
-  .animated-crypto-bg {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1515 100%);
-  }
-
-  .rustic-texture-overlay {
     opacity: 0.5;
   }
 }
 
+/* Glow pulse animation */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+
+/* Responsive design - Mobile */
+@media (max-width: 768px) {
+  .animated-crypto-bg {
+    background: #0a0a0a;
+  }
+
+  .futuristic-grid {
+    opacity: 0.2;
+    background-size: 40px 40px;
+  }
+
+  .neon-glow-layer {
+    opacity: 0.08;
+  }
+
+  .crypto-coin {
+    filter: drop-shadow(0 0 5px var(--neon-color)) drop-shadow(0 0 10px var(--neon-color, rgba(0, 255, 136, 0.2)));
+  }
+
+  .coin-1, .coin-2, .coin-3 {
+    --neon-color: #00ff88;
+  }
+
+  .coin-4, .coin-5, .coin-6 {
+    --neon-color: #ffffff;
+  }
+
+  .coin-7, .coin-8 {
+    --neon-color: #00ffff;
+  }
+}
+
 /* Tablet adjustments */
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+  .futuristic-grid {
+    opacity: 0.35;
+  }
+
+  .crypto-coin {
+    filter: drop-shadow(0 0 7px var(--neon-color)) drop-shadow(0 0 14px var(--neon-color, rgba(0, 255, 136, 0.25)));
+  }
+}
+
+/* Accessibility - reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .crypto-coin,
+  .futuristic-grid,
+  .neon-glow-layer {
+    animation: none;
+  }
+
+  .crypto-coin {
+    opacity: 0.6;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
   .btc-coin {
-    top: 12%;
-    left: 8%;
+    filter: drop-shadow(0 0 12px #00ff88) drop-shadow(0 0 24px #00ff88);
   }
 
   .eth-coin {
-    top: 40%;
-    right: 10%;
+    filter: drop-shadow(0 0 12px #ffffff) drop-shadow(0 0 24px #00ffff);
   }
 
   .erg-coin {
-    bottom: 18%;
-    left: 15%;
-  }
-}
-
-/* Dark mode (if system preference) - enhanced effect */
-@media (prefers-color-scheme: dark) {
-  .animated-crypto-bg {
-    background: linear-gradient(135deg, #050505 0%, #0f0a0a 50%, #0a0505 100%);
-  }
-}
-
-/* Reduce motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .crypto-coin {
-    animation: none;
-  }
-
-  .rustic-texture-overlay {
-    animation: none;
+    filter: drop-shadow(0 0 12px #00ffff) drop-shadow(0 0 24px #00ffff);
   }
 }
