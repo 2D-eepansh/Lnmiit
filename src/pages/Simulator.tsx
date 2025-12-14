@@ -205,11 +205,6 @@ export function Simulator() {
                 disabled={inputs.is100Year}
                 className="slider"
               />
-              <div className="slider-labels">
-                <span>Days</span>
-                <span>5 years</span>
-                <span>10 years</span>
-              </div>
               <p className="control-description">
                 Longer time horizons mean more uncertainty and less reliable assumptions.
               </p>
