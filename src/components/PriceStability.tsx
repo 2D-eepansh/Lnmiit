@@ -47,9 +47,36 @@ export function PriceStability() {
         )}
       </div>
 
+      <div className="volatility-explanation">
+        <h4>Understanding Price Stability</h4>
+        <p>
+          {volatility.riskLevel === 'stable' && (
+            <>
+              ✓ ERG is showing <strong>low volatility</strong> compared to typical crypto assets.
+              This indicates price stability and may reflect market confidence.
+            </>
+          )}
+          {volatility.riskLevel === 'caution' && (
+            <>
+              ⚠ ERG is showing <strong>moderate volatility</strong>. This is normal for cryptocurrency
+              markets but warrants careful monitoring of price movements.
+            </>
+          )}
+          {volatility.riskLevel === 'volatile' && (
+            <>
+              ⚡ ERG is experiencing <strong>high volatility</strong>. Large price swings are occurring.
+              This is common during market uncertainty or low liquidity periods.
+            </>
+          )}
+        </p>
+      </div>
+
       <div className="price-main">
         <div className="price-current">
-          <span className="price-label">Current Price</span>
+          <div className="price-label-row">
+            <span className="price-label">Current Price</span>
+            <span className="context-tag">Market Signal (Contextual)</span>
+          </div>
           <div className="price-value-container">
             <span className="price-value">${priceData.usd.toFixed(4)}</span>
             <span className={`price-change ${isPositive ? 'positive' : 'negative'}`}>
@@ -114,30 +141,6 @@ export function PriceStability() {
             </div>
           </div>
         )}
-      </div>
-
-      <div className="volatility-explanation">
-        <h4>Understanding Price Stability</h4>
-        <p>
-          {volatility.riskLevel === 'stable' && (
-            <>
-              ✓ ERG is showing <strong>low volatility</strong> compared to typical crypto assets.
-              This indicates price stability and may reflect market confidence.
-            </>
-          )}
-          {volatility.riskLevel === 'caution' && (
-            <>
-              ⚠ ERG is showing <strong>moderate volatility</strong>. This is normal for cryptocurrency
-              markets but warrants careful monitoring of price movements.
-            </>
-          )}
-          {volatility.riskLevel === 'volatile' && (
-            <>
-              ⚡ ERG is experiencing <strong>high volatility</strong>. Large price swings are occurring.
-              This is common during market uncertainty or low liquidity periods.
-            </>
-          )}
-        </p>
       </div>
     </div>
   );

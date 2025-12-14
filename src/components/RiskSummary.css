@@ -1,40 +1,24 @@
 .risk-summary {
-  background: linear-gradient(135deg, rgba(17, 17, 20, 0.9), rgba(23, 23, 27, 0.85));
-  border-radius: 18px;
-  padding: 1.75rem;
-  box-shadow: var(--glow-strong), 0 18px 40px rgba(0, 0, 0, 0.4);
-  border: var(--glass-border);
-  backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  background: var(--color-bg-panel);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border-light);
+  transition: border-color 0.2s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .risk-summary:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--glow-strong), 0 22px 46px rgba(0, 0, 0, 0.45);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-.risk-summary::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: 16px;
-  background: radial-gradient(circle at 18% 18%, rgba(60, 242, 255, 0.08), transparent 32%),
-              radial-gradient(circle at 88% 5%, rgba(255, 106, 47, 0.08), transparent 30%);
-  mix-blend-mode: screen;
-  pointer-events: none;
+  border-color: var(--color-border);
 }
 
 .summary-main {
   text-align: center;
   padding: 2rem 0;
-  background: var(--glass);
-  border-radius: 14px;
+  background: var(--color-bg-secondary);
+  border-radius: 4px;
   margin: 1.5rem 0;
-  border: var(--glass-border);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--color-border-light);
   position: relative;
 }
 
@@ -42,7 +26,6 @@
   width: 64px;
   height: 64px;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.08));
 }
 
 .summary-icon.stable {
@@ -54,7 +37,7 @@
 }
 
 .summary-icon.volatile {
-  color: var(--color-danger);
+  color: #f28b82;
 }
 
 .summary-score-large {
@@ -94,9 +77,9 @@
 }
 
 .level-volatile {
-  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.08));
-  color: var(--color-danger);
-  border: 2px solid rgba(255, 107, 107, 0.6);
+  background: linear-gradient(135deg, rgba(242, 139, 130, 0.2), rgba(242, 139, 130, 0.08));
+  color: #f28b82;
+  border: 2px solid rgba(242, 139, 130, 0.55);
 }
 
 .summary-message {
@@ -105,6 +88,13 @@
   color: var(--color-text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.humility-note {
+  margin: 0.5rem auto 0;
+  max-width: 540px;
+  color: var(--color-text-tertiary);
+  font-size: 0.85rem;
 }
 
 .factors-breakdown {
@@ -118,6 +108,12 @@
   margin-bottom: 1rem;
   font-size: 1.1rem;
   color: var(--color-text);
+}
+
+.factor-note {
+  margin: -0.35rem 0 0.65rem;
+  color: var(--color-text-tertiary);
+  font-size: 0.85rem;
 }
 
 .factor-item {
@@ -156,8 +152,8 @@
 }
 
 .score-volatile {
-  background: linear-gradient(135deg, rgba(255, 107, 107, 0.18), rgba(255, 107, 107, 0.06));
-  color: var(--color-danger);
+  background: linear-gradient(135deg, rgba(242, 139, 130, 0.18), rgba(242, 139, 130, 0.06));
+  color: #f28b82;
 }
 
 .factor-bar {
@@ -183,7 +179,7 @@
 }
 
 .fill-volatile {
-  background: linear-gradient(90deg, var(--color-danger), rgba(255, 107, 107, 0.7));
+  background: linear-gradient(90deg, #f28b82, rgba(242, 139, 130, 0.65));
 }
 
 .factor-description {

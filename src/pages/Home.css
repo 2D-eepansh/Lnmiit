@@ -1,0 +1,107 @@
+.home-page {
+  padding: 1rem 2.5rem 1.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  margin: 0 0 0.75rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.refresh-button:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.refresh-button svg {
+  transition: transform 0.3s ease;
+}
+
+.refresh-button svg.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.home-section {
+  margin-bottom: 0.75rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.card-wrapper {
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .page-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .page-intro p {
+    font-size: 0.95rem;
+  }
+
+  .refresh-button {
+    width: 100%;
+  }
+}

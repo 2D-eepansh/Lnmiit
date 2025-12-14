@@ -122,6 +122,8 @@ export function NetworkHealth() {
           ></div>
         </div>
       </div>
+
+      <p className="helper-text">Block-time consistency reflects miner participation and network synchronization.</p>
     </div>
   );
 }

@@ -1,31 +1,15 @@
 .network-health {
-  background: linear-gradient(135deg, rgba(17, 17, 20, 0.9), rgba(23, 23, 27, 0.85));
-  border-radius: 18px;
-  padding: 1.75rem;
-  box-shadow: var(--glow-strong), 0 18px 40px rgba(0, 0, 0, 0.4);
-  border: var(--glass-border);
-  backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  background: var(--color-bg-panel);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border-light);
+  transition: border-color 0.2s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .network-health:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--glow-strong), 0 22px 46px rgba(0, 0, 0, 0.45);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-.network-health::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: 16px;
-  background: radial-gradient(circle at 20% 20%, rgba(60, 242, 255, 0.08), transparent 35%),
-              radial-gradient(circle at 80% 0%, rgba(255, 106, 47, 0.08), transparent 30%);
-  pointer-events: none;
-  opacity: 0.9;
-  mix-blend-mode: screen;
+  border-color: var(--color-border);
 }
 
 .network-health.loading {
@@ -38,24 +22,15 @@
 .skeleton-title {
   width: 40%;
   height: 24px;
-  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  background: var(--color-bg-secondary);
   border-radius: 4px;
 }
 
 .skeleton-content {
   width: 100%;
   height: 60px;
-  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 8px;
-}
-
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  background: var(--color-bg-secondary);
+  border-radius: 4px;
 }
 
 .card-header {
@@ -66,8 +41,7 @@
 }
 
 .header-icon {
-  color: var(--color-primary-light);
-  filter: drop-shadow(0 0 6px rgba(255, 106, 47, 0.4));
+  color: var(--color-primary);
 }
 
 .card-header h2 {
@@ -90,21 +64,21 @@
 }
 
 .badge-stable {
-  background: linear-gradient(135deg, rgba(73, 242, 143, 0.15), rgba(73, 242, 143, 0.05));
+  background: #e8f4ec;
   color: var(--color-success);
-  border: 1px solid rgba(73, 242, 143, 0.4);
+  border: 1px solid var(--color-success);
 }
 
 .badge-caution {
-  background: linear-gradient(135deg, rgba(255, 179, 71, 0.15), rgba(255, 179, 71, 0.05));
+  background: #faf4e8;
   color: var(--color-warning);
-  border: 1px solid rgba(255, 179, 71, 0.4);
+  border: 1px solid var(--color-warning);
 }
 
 .badge-volatile {
-  background: linear-gradient(135deg, rgba(255, 107, 107, 0.18), rgba(255, 107, 107, 0.06));
+  background: #f9eded;
   color: var(--color-danger);
-  border: 1px solid rgba(255, 107, 107, 0.45);
+  border: 1px solid var(--color-danger);
 }
 
 .metrics-grid {
@@ -225,6 +199,13 @@
   height: 100%;
   border-radius: 4px;
   transition: width 0.5s ease, background-color 0.3s;
+}
+
+.helper-text {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text-tertiary);
+  line-height: 1.4;
 }
 
 .stability-stable {

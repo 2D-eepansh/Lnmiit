@@ -36,12 +36,12 @@ export function RiskSummary() {
 
   const getMessage = () => {
     if (level === 'stable') {
-      return 'The Ergo network is operating stably with consistent block production and healthy metrics.';
+      return 'Indicators align with recent historical norms. Continue observing underlying metrics for context.';
     }
     if (level === 'caution') {
-      return 'The Ergo network shows some fluctuations. Monitor the situation but no immediate concerns.';
+      return 'Some variability is present. Interpret alongside block-time and activity metrics.';
     }
-    return 'The Ergo network is experiencing elevated volatility. This may be temporary or indicate market stress.';
+    return 'Indicators show elevated variability. Treat as a contextual signal and review underlying metrics.';
   };
 
   return (
@@ -58,6 +58,7 @@ export function RiskSummary() {
           {level.toUpperCase()}
         </div>
         <p className="summary-message">{getMessage()}</p>
+        <p className="humility-note">This score summarizes selected indicators and should be interpreted alongside the underlying metrics.</p>
       </div>
 
       <div className="factors-breakdown">
@@ -71,6 +72,7 @@ export function RiskSummary() {
             </span>
           </span>
         </h3>
+        <p className="factor-note">Factors are weighted heuristically based on historical relevance.</p>
 
         <div className="factor-item">
           <div className="factor-header">

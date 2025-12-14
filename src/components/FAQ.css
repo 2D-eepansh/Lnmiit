@@ -1,10 +1,9 @@
 .faq-card {
-  background: linear-gradient(135deg, rgba(17, 17, 20, 0.9), rgba(23, 23, 27, 0.85));
-  border-radius: 18px;
-  padding: 1.5rem;
-  box-shadow: var(--glow-strong), 0 18px 40px rgba(0, 0, 0, 0.4);
-  border: var(--glass-border);
-  backdrop-filter: blur(10px);
+  background: var(--color-bg-panel);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border-light);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -17,8 +16,7 @@
 }
 
 .faq-icon {
-  color: var(--color-primary-light);
-  filter: drop-shadow(0 0 8px rgba(255, 106, 47, 0.45));
+  color: var(--color-primary);
 }
 
 .faq-subtitle {
@@ -34,16 +32,16 @@
 }
 
 .faq-item {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-border-light);
+  border-radius: 4px;
+  background: var(--color-bg-panel);
   overflow: hidden;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 .faq-item.open {
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  border-color: var(--color-border);
+  background: var(--color-bg-secondary);
 }
 
 .faq-question {

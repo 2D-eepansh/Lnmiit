@@ -1,12 +1,81 @@
-# Ergo Stability Dashboard
+# CryptoNanny — Ergo Stability Dashboard
 
-A **transparent, read-only analytics platform** for the Ergo blockchain. Monitor network health, block production consistency, price volatility, and overall stability in real-time with zero wallet connections.
+A **calm, academic, ethics-first analytics platform** for the Ergo blockchain. Monitor network health, block production consistency, and stability metrics with zero hype, zero wallet connections, and complete transparency.
 
-## 🎯 Problem Statement
+---
 
-The Ergo ecosystem lacks transparent, real-time stability metrics accessible to all stakeholders. Users, developers, and traders need clear, unbiased data about network health and ERG price signals—without making speculative investment decisions.
+## 🎯 Design Philosophy
 
-## ✨ Features (Ranked by Impact)
+This is NOT a marketing site, NOT a trading platform, and NOT a growth-hacking UI.
+
+**CryptoNanny** is designed to be:
+- **Calm**: Muted colors, flat design, generous whitespace
+- **Academic**: Information-first, research-oriented layout
+- **Responsible**: No promises, no emotional manipulation, no urgency
+- **Ethics-first**: Clear limitations, transparent methodology
+- **Ergo-inspired**: Cypherpunk values, old-school simplicity
+
+---
+
+## 📋 Redesign Progress
+
+### ✅ PHASE 1 — GLOBAL THEME RESET & LAYOUT CLEANUP (COMPLETED)
+
+**Color Palette:**
+- Background: `#fafaf9` (off-white)
+- Secondary Background: `#f4f4f2` (very light grey)
+- Panel Background: `#ffffff` (white)
+- Text Primary: `#1a1a1a` (near-black)
+- Text Secondary: `#4a4a4a` (charcoal)
+- Text Tertiary: `#6a6a6a` (soft grey)
+- Accent Primary: `#2d4a37` (muted sage green)
+- Accent Light: `#3d5a47`
+- Accent Dark: `#1d3a27`
+- Border: `#d4d4d0` (soft grey)
+- Border Light: `#e5e5e3`
+
+**Dark Theme Support:**
+- Background: `#0a0a0a` (deep black)
+- Panels: `#1a1a1a` (dark grey)
+- Accent: `#4a7a5d` (muted green)
+- Text: `#e5e5e5` (off-white)
+
+**Typography:**
+- Font: Inter (system fallback: -apple-system, BlinkMacSystemFont, Segoe UI)
+- H1: 2.25rem, weight 600, letter-spacing -0.02em
+- H2: 1.75rem, weight 600, letter-spacing -0.01em
+- H3: 1.25rem, weight 500
+- Body: 1rem, line-height 1.6, color secondary
+
+**Visual Style:**
+- ✅ Removed ALL neon colors
+- ✅ Removed ALL gradients (except KYA modal in dark theme)
+- ✅ Removed ALL glow effects
+- ✅ Flat design with soft shadows only (0 2px 4px rgba)
+- ✅ Border radius: 4px (flat, not rounded)
+- ✅ Minimal animations (hover states only)
+
+**Layout Structure:**
+- ✅ Vertical section-based layout with clear separation
+- ✅ Generous spacing: 1rem section padding, 0.75rem grid gaps
+- ✅ Compact grid system: 280px min column width (allows 3-4 columns)
+- ✅ Information-first hierarchy
+- ✅ Theme toggle (Sun/Moon icon in navigation)
+- ✅ Refresh button moved to navigation bar (icon-only)
+
+**Sections Order:**
+1. Navigation Bar (TopNav with theme toggle + refresh)
+2. Network Overview (Hero)
+3. Phase Two Insights (Anomaly Radar + Availability + Data Source Status)
+4. Network Health + Price Stability (2-column grid)
+5. Risk Summary (full-width)
+6. Charts (Block Time, Price, Transaction Volume - 3-column grid)
+7. About Section + FAQ (2-column grid)
+8. Footer (minimal, muted)
+
+---
+
+## ✨ Current Features
 
 ### 🥇 High Impact
 - **Stability Score (0-100)**: Composite metric blending block time consistency (50%), difficulty stability (30%), and network activity (20%)
