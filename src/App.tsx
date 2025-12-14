@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import { AppProvider } from './context/AppContext';
 import { useApp } from './context/useApp';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -7,7 +7,10 @@ import { Home } from './pages/Home';
 import { Methodology } from './pages/Methodology';
 import { Assumptions } from './pages/Assumptions';
 import { FAQPage } from './pages/FAQPage';
-const KYAModal = lazy(() => import('./components/KYAModal').then(mod => ({ default: mod.KYAModal })));
+import { NoteFromTeam } from './pages/NoteFromTeam';
+import { Simulator } from './pages/Simulator';
+import { MarketReality } from './pages/MarketReality';
+import { KYA } from './pages/KYA';
 import { AlertCircle } from 'lucide-react';
 import './App.css';
 
@@ -18,7 +21,6 @@ function AppContent() {
     setKyaShown,
   } = useApp();
   
-  const [kyaModalOpen, setKyaModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -46,7 +48,7 @@ function AppContent() {
   };
 
   const handleKYAClick = () => {
-    setKyaModalOpen(true);
+    setCurrentPage('kya');
     setKyaShown(true);
   };
 
@@ -58,6 +60,14 @@ function AppContent() {
         return <Assumptions />;
       case 'faq':
         return <FAQPage />;
+      case 'note':
+        return <NoteFromTeam />;
+      case 'simulator':
+        return <Simulator />;
+      case 'market-reality':
+        return <MarketReality />;
+      case 'kya':
+        return <KYA />;
       default:
         return <Home onOpenKYA={handleKYAClick} />;
     }
@@ -65,16 +75,10 @@ function AppContent() {
 
   return (
     <div className="app">
-      {/* KYA Modal - Positioned at Top */}
-      <Suspense fallback={null}>
-        <KYAModal isOpen={kyaModalOpen} onClose={() => setKyaModalOpen(false)} />
-      </Suspense>
-
       {/* Top Navigation */}
       <TopNav
         currentPage={currentPage}
         onNavigate={setCurrentPage}
-        onOpenKYA={handleKYAClick}
         onRefresh={handleRefresh}
         isRefreshing={isRefreshing}
       />

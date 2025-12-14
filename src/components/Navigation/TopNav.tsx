@@ -6,12 +6,11 @@ import './TopNav.css';
 interface TopNavProps {
   currentPage: string;
   onNavigate: (page: string) => void;
-  onOpenKYA: () => void;
   onRefresh: () => Promise<void>;
   isRefreshing?: boolean;
 }
 
-export function TopNav({ currentPage, onNavigate, onOpenKYA, onRefresh, isRefreshing = false }: TopNavProps) {
+export function TopNav({ currentPage, onNavigate, onRefresh, isRefreshing = false }: TopNavProps) {
   const { apiHealthy, lastUpdated, usingMockData } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
@@ -27,10 +26,11 @@ export function TopNav({ currentPage, onNavigate, onOpenKYA, onRefresh, isRefres
   };
 
   const pages = [
-    { id: 'home', label: 'Home' },
-    { id: 'methodology', label: 'Methodology' },
-    { id: 'assumptions', label: 'Assumptions' },
-    { id: 'faq', label: 'FAQs' },
+    { id: 'home', label: 'Dashboard' },
+    { id: 'simulator', label: 'Simulator' },
+    { id: 'market-reality', label: 'Market Reality' },
+    { id: 'note', label: 'Note from the Team' },
+    { id: 'kya', label: 'KYA' },
   ];
 
   const handleNavClick = (pageId: string) => {
@@ -42,8 +42,7 @@ export function TopNav({ currentPage, onNavigate, onOpenKYA, onRefresh, isRefres
     <nav className="top-nav">
       <div className="nav-container">
         <div className="nav-branding">
-          <h1>Ergo Stability Dashboard</h1>
-          <p className="nav-subtitle">A read-only, observational view of Ergo network stability</p>
+          <h1>CryptoNanny</h1>
         </div>
 
         <div className={`nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
@@ -56,9 +55,6 @@ export function TopNav({ currentPage, onNavigate, onOpenKYA, onRefresh, isRefres
               {page.label}
             </button>
           ))}
-          <button className="nav-kya-btn" onClick={onOpenKYA}>
-            KYA
-          </button>
           <button
             className="nav-icon-btn"
             onClick={onRefresh}

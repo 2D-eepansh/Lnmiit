@@ -5,47 +5,29 @@
   width: 100%;
 }
 
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.75rem;
-  gap: 1.5rem;
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  margin-bottom: 2rem;
 }
 
-.page-intro {
-  flex: 1;
-}
-
-.page-intro h2 {
-  margin: 0 0 0.5rem;
-  font-size: 2rem;
-  font-weight: 700;
+.hero-title {
+  margin: 0 0 0.75rem;
+  font-size: 2.5rem;
+  font-weight: 600;
   color: var(--color-text);
+  letter-spacing: -0.02em;
 }
 
-.page-intro p {
+.hero-subtitle {
   margin: 0;
+  font-size: 1.125rem;
+  font-weight: 400;
   color: var(--color-text-secondary);
-  font-size: 1rem;
   line-height: 1.6;
   max-width: 600px;
-}
-
-.refresh-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--color-primary);
-  color: #ffffff;
-  border: 1px solid var(--color-primary-dark);
-  border-radius: 4px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  flex-shrink: 0;
-  font-size: 0.875rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .refresh-button:hover:not(:disabled) {

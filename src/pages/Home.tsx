@@ -16,12 +16,10 @@ interface HomeProps {
 export function Home({ onOpenKYA }: HomeProps) {
   return (
     <main className="home-page">
-      <div className="page-header">
-        <div className="page-intro">
-          <h2>Network Overview</h2>
-          <p>Current observations and recent trends in Ergo network activity and ERG market conditions.</p>
-        </div>
-      </div>
+      <section className="hero-section">
+        <h1 className="hero-title">CryptoNanny</h1>
+        <h2 className="hero-subtitle">A sobriety and context layer for crypto decisions</h2>
+      </section>
 
       {/* Top Row: Phase 2 Insights */}
       <section className="home-section full-width">
